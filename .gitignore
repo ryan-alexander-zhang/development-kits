@@ -2,3 +2,5 @@
 linkding/data/
 
 ./.idea
+.DS_Store
+**/.DS_Store
