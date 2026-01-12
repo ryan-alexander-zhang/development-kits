@@ -1,6 +1,6 @@
 # Ignore linkding data directory
 linkding/data/
 
-./.idea
+.idea/
 .DS_Store
 **/.DS_Store

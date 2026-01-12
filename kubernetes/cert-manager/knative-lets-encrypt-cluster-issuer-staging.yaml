@@ -1,0 +1,16 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: knative-lets-encrypt-cluster-issuer-staging
+spec:
+  acme:
+    email: <change-me>
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: knative-lets-encrypt-cluster-issuer-staging-private-key
+    solvers:
+      - dns01:
+          cloudflare:
+            apiTokenSecretRef:
+              name: knative-cloudflare-api-token-secret-staging
+              key: api-token
