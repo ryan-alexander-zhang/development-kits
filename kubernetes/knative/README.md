@@ -161,5 +161,28 @@ kn service create hello \
   -n test03
 ```
 
+## Install Knative Eventing
+
+### Download the Knative Eventing CRDs
+
+```shell
+curl -L --output-dir ./eventing -O https://github.com/knative/eventing/releases/download/knative-v1.20.0/eventing-crds.yaml
+```
+
+### Download the Knative Eventing Core
+
+```shell
+curl -L --output-dir ./eventing -O https://github.com/knative/eventing/releases/download/knative-v1.20.0/eventing-core.yaml
+```
+
+### Install Knative Eventing
+```shell
+kubectl apply -f ./eventing/eventing-crds.yaml
+```
+
+```shell
+kubectl apply -f ./eventing/eventing-core.yaml
+```
+
 # References
 * https://knative.dev/docs/install/yaml-install/serving/install-serving-with-yaml/
