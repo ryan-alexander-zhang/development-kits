@@ -184,5 +184,25 @@ kubectl apply -f ./eventing/eventing-crds.yaml
 kubectl apply -f ./eventing/eventing-core.yaml
 ```
 
+### Install Knative Eventing Kafka Broker
+
+Controller plane:
+```shell
+curl -L --output-dir ./eventing -O https://github.com/knative-extensions/eventing-kafka-broker/releases/download/knative-v1.20.1/eventing-kafka-controller.yaml
+```
+
+```shell
+kubectl apply -f ./eventing/eventing-kafka-controller.yaml
+```
+
+Data plane:
+```shell
+curl -L --output-dir ./eventing -O https://github.com/knative-extensions/eventing-kafka-broker/releases/download/knative-v1.20.1/eventing-kafka-broker.yaml
+```
+
+```shell
+kubectl apply -f ./eventing/eventing-kafka-broker.yaml
+```
+
 # References
 * https://knative.dev/docs/install/yaml-install/serving/install-serving-with-yaml/
