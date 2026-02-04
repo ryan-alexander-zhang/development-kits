@@ -1,12 +1,12 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: harbor-cert
+  name: keycloak-cert
   namespace: istio-system
 spec:
-  secretName: harbor-cert
+  secretName: keycloak-cert
   dnsNames:
     - <change-me>
   issuerRef:
     kind: ClusterIssuer
-    name: infra-dns-lets-encrypt-cluster-issuer-staging
+    name: infra-lets-encrypt-cluster-issuer-staging
