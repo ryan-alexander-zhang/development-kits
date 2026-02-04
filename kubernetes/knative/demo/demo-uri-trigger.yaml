@@ -1,0 +1,21 @@
+apiVersion: eventing.knative.dev/v1
+kind: Trigger
+metadata:
+  annotations:
+    eventing.knative.dev/creator: "212880566999480129"
+    eventing.knative.dev/lastModifier: "212880566999480129"
+  finalizers:
+    - kafka.triggers.eventing.knative.dev
+  labels:
+    eventing.knative.dev/broker: default
+  name: url-trigger-01
+  namespace: test06
+spec:
+  broker: default
+  filter: {}
+  subscriber:
+    uri: <change-me>
+    CACerts: |-
+      -----BEGIN CERTIFICATE-----
+      
+      -----END CERTIFICATE-----
