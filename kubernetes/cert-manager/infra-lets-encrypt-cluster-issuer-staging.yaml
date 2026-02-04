@@ -1,14 +1,16 @@
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: infra-lets-encrypt-cluster-issuer-staging
+  name: infra-dns-lets-encrypt-cluster-issuer-staging
 spec:
   acme:
     email: <change-me>
     server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
-      name: infra-lets-encrypt-cluster-issuer-staging-private-key
+      name: infra-dns-lets-encrypt-cluster-issuer-staging-private-key
     solvers:
-      - http01:
-          ingress:
-            class: nginx
+      - dns01:
+          cloudflare:
+            apiTokenSecretRef:
+              name: infra-cloudflare-api-token-secret-staging
+              key: api-token
