@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: harbor-cert
+  namespace: istio-system
+spec:
+  secretName: harbor-cert
+  dnsNames:
+    - <change-me>
+  issuerRef:
+    kind: ClusterIssuer
+    name: infra-lets-encrypt-cluster-issuer-staging

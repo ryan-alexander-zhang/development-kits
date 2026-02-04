@@ -1,5 +1,5 @@
 # Install
-TODO For future.
+
 
 ```shell
 helm repo add harbor https://helm.goharbor.io
@@ -32,7 +32,7 @@ helm install harbor ./harbor \
 
 ```shell
 # Update the Harbor chart
-helm upgrade infra-harbor ./harbor \
+helm upgrade harbor ./harbor \
   --namespace infra-harbor \
   --values ./harbor-values-staging.yaml
 ```
