@@ -3,3 +3,60 @@ global:
 
 clickhouse:
   installCustomStorageClass: true
+  # clickhouse.persistence -- ClickHouse persistence configuration.
+  # @section -- ClickHouse Persistence
+  persistence:
+    # clickhouse.persistence.enabled -- Enable data persistence using a PVC for ClickHouse data.
+    # @default -- true
+    enabled: true
+    # clickhouse.persistence.existingClaim -- Use a manually managed Persistent Volume Claim. If defined, the PVC must be created manually.
+    # @default -- ""
+    existingClaim: ""
+    # clickhouse.persistence.storageClass -- Persistent Volume Storage Class. If "-", disables dynamic provisioning. If null, uses the default provisioner.
+    # @default -- null
+    storageClass: null
+    # clickhouse.persistence.accessModes -- Access Modes for the persistent volume.
+    # @default -- ["ReadWriteOnce"]
+    accessModes:
+      - ReadWriteOnce
+    # clickhouse.persistence.size -- Persistent Volume size.
+    # @default -- "20Gi"
+    size: 100Gi
+  zookeeper:
+    persistence:
+      # -- Enable ZooKeeper data persistence using PVC. If false, use emptyDir
+      enabled: true
+
+      # -- Name of an existing PVC to use (only when deploying a single replica)
+      existingClaim: ""
+
+      # -- PVC Access modes
+      accessModes:
+        - ReadWriteOnce
+
+      # -- PVC Storage Request for ZooKeeper data volume
+      size: 20Gi
+      ## Persistence for a dedicated data log directory
+      ##
+      dataLogDir:
+        ## @param persistence.dataLogDir.size PVC Storage Request for ZooKeeper's dedicated data log directory
+        ##
+        size: 20Gi
+signoz:
+  persistence:
+    # signoz.persistence.enabled - Enable data persistence using a PVC.
+    # @default -- true
+    enabled: true
+    # signoz.persistence.existingClaim - Use a manually managed PVC.
+    # @default -- ""
+    existingClaim: ""
+    # signoz.persistence.storageClass - The storage class for the PVC. If "-", disables dynamic provisioning.
+    # @default -- null
+    storageClass: null
+    # signoz.persistence.accessModes - Access modes for the persistent volume.
+    # @default -- ["ReadWriteOnce"]
+    accessModes:
+      - ReadWriteOnce
+    # signoz.persistence.size - The size of the persistent volume.
+    # @default -- "1Gi"
+    size: 20Gi

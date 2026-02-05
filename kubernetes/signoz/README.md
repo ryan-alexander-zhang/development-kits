@@ -1,4 +1,4 @@
-# Installation
+# Installation SigNoz
 
 ```shell
 helm repo add signoz https://charts.signoz.io
@@ -17,13 +17,42 @@ helm pull signoz/signoz --version 0.107.0 --untar --destination ./
 helm install signoz ./signoz \
   --namespace infra-signoz \
   --create-namespace \
-  --values ./signoz-values-staging.yaml
+  --values ./signoz-values-staging.yaml \
+  --set clickhouse.zookeeper.persistence.size=20Gi \
+  --set clickhouse.zookeeper.persistence.dataLogDir.size=20Gi
 ```
 
 ```shell
-helm install signoz signoz/signoz \
-   --namespace <namespace> --create-namespace \
-   --wait \
-   --timeout 1h \
-   -f values.yaml
+# Update the SigNoz chart
+helm upgrade signoz ./signoz \
+  --namespace infra-signoz \
+  --values ./signoz-values-staging.yaml \
+  --set clickhouse.zookeeper.persistence.size=20Gi \
+  --set clickhouse.zookeeper.persistence.dataLogDir.size=20Gi
+```
+
+```shell
+# Delete the SigNoz
+helm uninstall signoz --namespace infra-signoz
+```
+
+# Deploy Result
+
+```shell
+NAME: signoz
+LAST DEPLOYED: Thu Feb  5 14:19:21 2026
+NAMESPACE: infra-signoz
+STATUS: deployed
+REVISION: 1
+NOTES:
+1. You have just deployed SigNoz cluster:
+
+- signoz version: 'v0.107.0'
+- otel-collector version: 'v0.129.12'
+
+2. Get the application URL by running these commands:
+
+  export POD_NAME=$(kubectl get pods --namespace infra-signoz -l "app.kubernetes.io/name=signoz,app.kubernetes.io/instance=signoz,app.kubernetes.io/component=signoz" -o jsonpath="{.items[0].metadata.name}")
+  echo "Visit http://127.0.0.1:8080 to use your application"
+  kubectl --namespace infra-signoz port-forward $POD_NAME 8080:8080
 ```
