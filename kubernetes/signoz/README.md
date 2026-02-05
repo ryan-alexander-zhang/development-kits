@@ -56,3 +56,31 @@ NOTES:
   echo "Visit http://127.0.0.1:8080 to use your application"
   kubectl --namespace infra-signoz port-forward $POD_NAME 8080:8080
 ```
+
+# Install kube-infra
+
+```shell
+helm pull signoz/k8s-infra --version 0.15.0 --untar --destination ./
+```
+
+```shell
+# Install manually with custom values
+helm install k8s-infra ./k8s-infra \
+  --namespace infra-k8s-infra \
+  --create-namespace \
+  --values ./k8s-infra-values-staging.yaml
+```
+
+# Deploy Result
+```shell
+NAME: k8s-infra
+LAST DEPLOYED: Thu Feb  5 16:04:41 2026
+NAMESPACE: infra-k8s-infra
+STATUS: deployed
+REVISION: 1
+NOTES:
+You have just deployed k8s-infra chart:
+
+- otel-agent version: '0.139.0'
+- otel-deployment version: '0.139.0'
+```
