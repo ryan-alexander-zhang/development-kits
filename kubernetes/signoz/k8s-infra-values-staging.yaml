@@ -9,3 +9,15 @@ presets:
     enabled: true
   loggingExporter:
     enabled: false
+  kubernetesAttributes:
+    enabled: true
+    passthrough: false    # Set true to disable k8s API calls
+    # This label/annotation extraction rule takes the value of the key from labels/annotations and maps it to the tag_name attribute which will be added to the associated resources
+    extractLabels:
+      # Example from pod
+      - tag_name: kn.service.name
+        key: serving.knative.dev/service
+        from: pod
+      - tag_name: pod_template_hash
+        key: pod-template-hash
+        from: pod

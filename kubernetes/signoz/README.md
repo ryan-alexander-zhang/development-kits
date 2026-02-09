@@ -71,6 +71,12 @@ helm install k8s-infra ./k8s-infra \
   --values ./k8s-infra-values-staging.yaml
 ```
 
+```shell
+helm upgrade k8s-infra ./k8s-infra \
+  --namespace infra-k8s-infra \
+  --values ./k8s-infra-values-staging.yaml
+```
+
 # Deploy Result
 ```shell
 NAME: k8s-infra
