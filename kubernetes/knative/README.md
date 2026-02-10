@@ -204,6 +204,15 @@ curl -L --output-dir ./eventing -O https://github.com/knative-extensions/eventin
 kubectl apply -f ./eventing/eventing-kafka-broker.yaml
 ```
 
+Kafka Source Data Plane
+```shell
+curl -L --output-dir ./eventing -O https://github.com/knative-extensions/eventing-kafka-broker/releases/download/knative-v1.21.0/eventing-kafka-source.yaml
+```
+
+```shell
+kubectl apply -f ./eventing/eventing-kafka-source.yaml
+```
+
 ## Configure Knative Eventing
 
 ### Configure kafka-broker-config
